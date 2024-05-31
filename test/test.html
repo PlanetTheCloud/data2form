@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Test Form</title>
+</head>
+
+<body>
+    <form action="" name="form_one">
+        <div>
+            <input type="text" name="text1">
+        </div>
+        <div>
+            <input type="text" name="text2">
+        </div>
+        <div>
+            <input type="email" name="email1">
+        </div>
+        <div>
+            <input type="email" name="email2">
+        </div>
+        <div>
+            <input type="password" name="pass1">
+        </div>
+        <div>
+            <input type="password" name="pass2">
+        </div>
+        <div>
+            <input type="range" name="range1">
+        </div>
+        <div>
+            <input type="range" name="range2">
+        </div>
+        <div>
+            <input type="checkbox" name="check1" value="first">
+            <label>First</label>
+            <input type="checkbox" name="check1" value="second">
+            <label>Second</label>
+        </div>
+        <div>
+            <input type="checkbox" name="check2[]" value="first">
+            <label>First</label>
+            <input type="checkbox" name="check2[]" value="second">
+            <label>Second</label>
+        </div>
+        <div>
+            <input type="radio" name="radio1" value="first">
+            <label>First</label>
+            <input type="radio" name="radio1" value="second">
+            <label>Second</label>
+        </div>
+        <div>
+            <input type="radio" name="radio2" value="first">
+            <label>First</label>
+            <input type="radio" name="radio2" value="second">
+            <label>Second</label>
+        </div>
+        <div>
+            <label for="cars">Choose a car:</label>
+            <select name="cars">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+        </div>
+        <div>
+            <input type="color" name="color1">
+            <input type="color" name="color2">
+        </div>
+        <div>
+            <input type="date" name="date1">
+            <input type="date" name="date2">
+        </div>
+        <div>
+            <input type="file" name="file1">
+        </div>
+        <div>
+            <input type="hidden" name="hidden1">
+            <input type="hidden" name="hidden2">
+        </div>
+        <div>
+            <input type="month" name="month1">
+            <input type="month" name="month2">
+        </div>
+        <div>
+            <input type="number" name="number1">
+            <input type="number" name="number2">
+        </div>
+        <div>
+            <input type="search" name="search1">
+            <input type="search" name="search2">
+        </div>
+        <div>
+            <input type="tel" name="tel1">
+            <input type="tel" name="tel2">
+        </div>
+        <div>
+            <input type="time" name="time1">
+            <input type="time" name="time2">
+        </div>
+        <div>
+            <input type="url" name="url1">
+            <input type="url" name="url2">
+        </div>
+        <div>
+            <input type="week" name="week1">
+            <input type="week" name="week2">
+        </div>
+        <div>
+            <input type="datetime-local" name="datetime-local1">
+            <input type="datetime-local" name="datetime-local2">
+        </div>
+    </form>
+    <script src="data2form.dist.js"></script>
+    <script>
+        let dat2 = (Data2Form(document.forms[0]));
+
+        dat2.callbackAfterFill('text', (a, b) => { console.log(a, b) });
+        dat2.callbackAfterFill('checkbox', (a, b) => { console.log(a, b) });
+        dat2.callbackAfterFill('select', (a, b) => { console.log(a, b) });
+        dat2.callbackAfterFill('password', (a, b) => { console.log(a, b) });
+
+        dat2.fill({
+            'text1': 'goes into text1',
+            'text2': 'goes into text2',
+            'email1': 'goes_into_email1@gmail.com',
+            'email2': 'goes_into_email2@gmail.com',
+            'pass1': 'goes into pass1',
+            'pass2': 'goes into pass2',
+            'range1': '23',
+            'range2': '56',
+            'check1': 'second,first',
+            'check2[]': 'first',
+            'radio1': 'first',
+            'radio2': 'second',
+            'cars': 'audi',
+            'color1': '#ffffff',
+            'color2': '#aaaaaa',
+            'date1': '2024-05-06',
+            'date2': '2024-08-06',
+            'file1': '',
+            'hidden1': 'goes into hidden1',
+            'hidden2': 'goes into hidden2',
+            'month1': '2024-07',
+            'month2': '2024-08',
+            'number1': 1234,
+            'number2': 5678,
+            'search1': 'goes into search1',
+            'search2': 'goes into search2',
+            'tel1': '+123456789',
+            'tel2': '+234567890',
+            'text1': 'goes into text1',
+            'text2': 'goes into text2',
+            'time1': '01:25',
+            'time2': '23:25',
+            'url1': 'https://google.com',
+            'url2': 'www.example.com',
+            'week1': '2024-W25',
+            'week2': '2024-W29',
+            'datetime-local1': '2024-06-19T05:24',
+            'datetime-local2': '2025-06-19T05:24',
+        });
+    </script>
+</body>
+
+</html>

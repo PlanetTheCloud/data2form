@@ -14,7 +14,7 @@ const Data2Form = (form_element) => {
     };
 
     // Supported input types
-    let supportedTypes = ['checkbox', 'color', 'date', 'email', 'file', 'hidden', 'month', 'number', 'password', 'radio', 'range', 'search', 'tel', 'text', 'time', 'url', 'week', 'select-one'];
+    let supportedTypes = ['checkbox', 'color', 'date', 'email', 'file', 'hidden', 'month', 'number', 'password', 'radio', 'range', 'search', 'tel', 'text', 'time', 'url', 'week', 'select-one', 'datetime-local'];
 
     // Check if jQuery is available
     let hasJQuery = ('undefined' != typeof window.jQuery);
@@ -67,9 +67,9 @@ const Data2Form = (form_element) => {
     function fillCheckbox(fields, values) {
         let filledAny = false;
         values = values.split(',');
-        for (let i in fields) {
-            let checked = (values.includes(fields[i].value)) ? true : false;
-            fields[i].checked = checked;
+        for (let field of fields) {
+            let checked = (values.includes(field.value)) ? true : false;
+            field.checked = checked;
             if (checked) filledAny = true;
         }
         return filledAny;
@@ -84,9 +84,9 @@ const Data2Form = (form_element) => {
      */
     function fillRadio(fields, value) {
         let filledAny = false;
-        for (let i in fields) {
-            let checked = (value == fields[i].value) ? true : false;
-            fields[i].checked = checked;
+        for (let field of fields) {
+            let checked = (value == field.value) ? true : false;
+            field.checked = checked;
             if (checked) filledAny = true;
         }
         return filledAny;
