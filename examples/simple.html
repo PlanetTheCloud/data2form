@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data2Form Example</title>
+    <!-- Include the library -->
+    <script src="https://cdn.jsdelivr.net/gh/PlanetTheCloud/data2form/dist/data2form.min.js"></script>
+</head>
+
+<body>
+    <form id="myForm">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div>
+            Subscribe:
+            <input type="checkbox" id="subscribeYes" name="subscribe" value="yes">
+            <label for="subscribeYes">Yes</label>
+            <input type="checkbox" id="subscribeNo" name="subscribe" value="no">
+            <label for="subscribeNo">No</label>
+        </div>
+        <div>
+            Gender:
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+        </div>
+        <div>
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+            </select>
+        </div>
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let form = document.querySelector('#myForm');
+            let d2f = Data2Form(form);
+
+            let formData = {
+                'username': 'john_doe',
+                'email': 'john@example.com',
+                'subscribe': 'yes',
+                'gender': 'male',
+                'country': 'US'
+            };
+
+            d2f.callbackAfterFill('text', (field, value) => {
+                console.log(`Text field '${field.name}' was filled with value '${value}'`);
+            });
+
+            let result = d2f.fill(formData);
+
+            if (result.success) {
+                console.log('Form filled successfully!');
+            } else {
+                console.error('Errors occurred while filling the form:', result.errors);
+            }
+        });
+    </script>
+</body>
+
+</html>
